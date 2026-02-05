@@ -1,0 +1,69 @@
+<!DOCTYPE html >
+<html th:replace="~{/admin/layout::view(~{::title},~{::main} )}">
+<head>
+<meta charset="UTF-8">
+<title>Thêm mới sản phẩm</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body>
+	<main>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header text-center">
+						Thêm mới sản phẩm
+					</div>
+					<div class="card-body">
+						<label th:text="${success}" class="text-success"></label>
+						<label th:text="${error}" class="text-danger"></label>
+						<form action="/admin/products/add" method="post" enctype="multipart/form-data" th:object="${product}">
+							<div class="mb-3">
+								<label for="name" class="form-label">Tên sản phẩm</label> 
+								<input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Tên sản phẩm">
+								<i th:errors="*{name}" class="text-danger"></i>
+							</div>
+							<div class="mb-3">
+								<label for="name" class="form-label">Slug</label> 
+								<input type="text" class="form-control" id="slug" th:field="*{slug}" placeholder="Slug">
+								<i th:errors="*{slug}" class="text-danger"></i>
+							</div>
+							<div class="mb-3">
+								<label for="quantity" class="form-label">Số lượng</label> 
+								<input type="number" class="form-control" id="quantity" th:field="*{quantity}" placeholder="Số lượng">
+								<i th:errors="*{quantity}" class="text-danger"></i>
+							</div>
+							<div class="mb-3">
+								<label for="price" class="form-label">Giá</label> 
+								<input type="number" class="form-control" id="price" th:field="*{price}" placeholder="Giá">
+								<i th:errors="*{price}" class="text-danger"></i>
+							</div>
+							<div class="mb-3">
+								<label for="price" class="form-label">Hình ảnh</label> 
+								<input type="file" class="form-control" id="image" name="imageProduct">
+							</div>
+							<div class="mb-3">
+								<label for="price" class="form-label">Mô tả</label> 
+								<textarea class="form-control" id="description" rows="3" th:field="*{description}"></textarea>
+							</div>
+							<div class="mb-3">
+								<select class="form-select" aria-label="Default select example" name="categoryId">
+								  <option selected>Loại sản phẩm</option>
+								  <option value="1">Điện thoại</option>
+								  <option value="2">Ipad</option>
+								  <option value="3">Đồng hồ</option>
+								</select>
+							</div>
+							<div class="mb-3">
+								<button class="btn btn-primary">Lưu</button>
+								<a th:href="@{/admin/products}" class="btn btn-secondary">Quay lại</a>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</main>
+</body>
+</html>

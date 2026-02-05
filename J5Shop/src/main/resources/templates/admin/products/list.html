@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/layout::view(~{::title},~{::main} )}">
+<head>
+<meta charset="UTF-8">
+<title>Quản lý sản phẩm</title>
+</head>
+<body>
+	<main>
+		<h3 class="text-center text-primary">Danh sách sản phẩm</h3>
+		<a th:href="@{/admin/products/add}" class="btn btn-primary float-end">Thêm mới</a>
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">#Id</th>
+		      <th scope="col">Ảnh</th>
+		      <th scope="col">Tên</th>
+		      <th scope="col">Slug</th>
+		      <th scope="col">Giá</th>
+		      <th scope="col">Số lượng</th>
+		      <th scope="col">Loại sản phẩm</th>
+		      <th scope="col">Trạng thái</th>
+		      <th scope="col" width="15%">Hành động</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	<th:block  th:each="product:${list}">
+			    <tr th:object="${product}">
+			      <th scope="row" th:text="*{id}">  </th>
+			      <td><img th:src="@{|/images/*{image}|}" width="50" height="50"></td>
+			      <td th:text="*{name}">Otto</td>
+			      <td th:text="*{slug}">Otto</td>
+			      <td th:text="*{price}">Otto</td>
+			      <td th:text="*{quantity}">Otto</td>
+			       <td th:text="*{category!=null?category.name:''}">Otto</td>   
+			      <td th:text="*{active?'Hoạt động':'Ngưng hoạt động'}">Otto</td>
+			      <td>
+			      	<a th:href="@{|/admin/products/edit/*{id}|}" class="btn btn-success">Sửa</a>
+			      	<a th:href="@{|/admin/products /delete/*{id}|}" class="btn btn-danger">Xóa</a>
+			      </td>
+			    </tr>
+		    </th:block>
+		  </tbody>
+		</table>
+	</main>
+</body>
+</html>
