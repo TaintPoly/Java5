@@ -10,4 +10,7 @@ import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category, Integer>{
 	public Page<Category> findByNameLikeAndId(String name, Integer id, Pageable pageable);
+	
+	//lay danh sách con hoạt đông(DSL)
+	public List<Category> findByActive(boolean active);
 }

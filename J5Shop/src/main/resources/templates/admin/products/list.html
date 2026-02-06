@@ -8,6 +8,10 @@
 	<main>
 		<h3 class="text-center text-primary">Danh sách sản phẩm</h3>
 		<a th:href="@{/admin/products/add}" class="btn btn-primary float-end">Thêm mới</a>
+		<form class="d-flex">
+			<input class="form-control me-2" name="keyword" type="text" placeholder="Từ khóa"/>
+			<button class="btn btn-outline-success" type="submit">Tìm</button>
+		</form>
 		<table class="table">
 		  <thead>
 		    <tr>
@@ -35,7 +39,7 @@
 			      <td th:text="*{active?'Hoạt động':'Ngưng hoạt động'}">Otto</td>
 			      <td>
 			      	<a th:href="@{|/admin/products/edit/*{id}|}" class="btn btn-success">Sửa</a>
-			      	<a th:href="@{|/admin/products /delete/*{id}|}" class="btn btn-danger">Xóa</a>
+			      	<a th:href="@{|/admin/products/delete/*{id}|}" class="btn btn-danger">Xóa</a>
 			      </td>
 			    </tr>
 		    </th:block>

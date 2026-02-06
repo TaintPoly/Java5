@@ -7,19 +7,24 @@
 <body>
 	
 	<main>
-		<div class="row">
-			<div class="col-md-3 mt-3" th:each="product:${list}">
+		<div class="row" th:object="${product}">
+			<div class="col-md-6">
+				<img alt="" th:src="@{|/images/*{image}|}" class="card-img-top">
+			</div>
+			<div class="col-md-6">
 				<div class="card" th:object="${product}">
-				  <img th:src="@{|/images/*{image}|}" class="card-img-top" alt="...">
-				  <div class="card-body">
+				 	<div class="card-body">
 				    <a th:href="@{|/san-pham/*{slug}|}"><h5 class="card-title" th:text="*{name}">Card title</h5></a>
 				    <p class="card-text" th:text="*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT') + ' đ'}"></p>
-				    <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
+				    <a th:href="@{|/gio-hang/them-vao-gio/*{id}|}" class="btn btn-primary">Thêm vào giỏ hàng</a>
 				    <a href="#" class="btn btn-secondary">Yêu thích</a>
 				  </div>
 				</div>
 			</div>
-			<a th:href="@{|?page-size=${pageSize}|}" class="text-center">Tải thêm</a>
+			<div class="col-md-12">
+				<h5>Mô tả sản phẩm</h5>
+				<p class="card-text" th:text="*{description}"></p>
+			</div>
 		</div>
 	</main>
 </body>
